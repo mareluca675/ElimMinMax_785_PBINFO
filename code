@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+long long n, m, mat[1001][1001], i, j, k, minim = 1000001, maxim = -1000001, lmax, cmax, lmin, cmin;
+bool ok;
+
+int main()
+{
+    cin >> n >> m;
+    
+    for(i = 1; i <= n; i ++)
+    {
+        for(j = 1; j <= m; j ++)
+        {
+            cin >> mat[i][j];
+            
+            if(minim > mat[i][j])
+            {
+                minim = mat[i][j];
+                lmin = i; cmin = j;
+            }
+            
+            if(maxim < mat[i][j])
+            {
+                maxim = mat[i][j];
+                lmax = i; cmax = j;
+            }
+        }
+    }
+    
+    for(i = 1; i <= n; i ++)
+    {
+        ok = false;
+        
+        for(j = 1; j <= m; j ++)
+        {
+            if(i != lmax and i != lmin and j != cmax and j != cmin)
+            {
+                cout << mat[i][j] << " ";
+                ok = true;
+            }
+        }
+        
+        if(ok == true)
+        {
+            cout << '\n';
+        }
+    }
+
+    return 0;
+}
